@@ -1,27 +1,36 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+  <div id="app" class="main-container">
+    <pandoras-box
+      caption="Accepting it will open a pandora's box"
+      @reject="handleReject"
+      @accepted="handleAccept"
+    ></pandoras-box>
+  </div>
 </template>
 
-<script lang="ts">
-import { Options, Vue } from "vue-class-component";
-import HelloWorld from "./components/HelloWorld.vue";
-
-@Options({
-  components: {
-    HelloWorld,
-  },
-})
-export default class App extends Vue {}
+<script setup lang="ts">
+import PandorasBox from "./components/PandorasBox.vue";
+function handleReject(): void {
+  alert("Rejected to open the pandora's box");
+}
+function handleAccept(): void {
+  alert("You have accepted opening the pandora's box");
+}
 </script>
 
-<style>
+<style scoped lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Inter", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: #000000;
+  box-sizing: border-box;
+}
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #1e1e1e;
 }
 </style>
